@@ -18,6 +18,7 @@ chapters:
   - file: notebooks/mitonet_segmentation
   - file: notebooks/cellpose_napari
   - file: notebooks/napari_convpaint
+  - file: notebooks/segment_anything
   - file: notebooks/manual_annotation
   - file: notebooks/custom_colormaps
 - file: make_a_simple_plugin
