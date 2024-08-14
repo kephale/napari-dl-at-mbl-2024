@@ -7,6 +7,7 @@ chapters:
 - file: getting_started
   sections:
   - file: installation
+  - file: bundled_app_setup
   - file: notebook_setup
 - file: notebooks/index
   sections:
