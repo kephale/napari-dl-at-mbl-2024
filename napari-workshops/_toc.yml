@@ -13,6 +13,7 @@ chapters:
   sections:
   - file: notebooks/intro_bioimage_visualization
   - file: notebooks/spot_detection
+  - file: notebooks/skimage_region_props
   - file: notebooks/segmenting_and_measuring_nuclei_stardist
   - file: notebooks/diy_interactive_segmentation
   - file: notebooks/mitonet_segmentation
