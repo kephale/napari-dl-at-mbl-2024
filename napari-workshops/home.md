@@ -7,5 +7,5 @@ These napari workshop materials are the product of efforts from:
 - Kyle Harrington
 - Kasia Kedziora
 - Dannielle McCarthy
-- Ashley Anderston
+- Ashley Anderson
 
