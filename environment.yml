@@ -10,3 +10,5 @@ dependencies:
   - pip:
     - jupyter-book
     - napari-animation
+    - "git+https://github.com/kephale/cellpose-napari@cellposev3"
+
