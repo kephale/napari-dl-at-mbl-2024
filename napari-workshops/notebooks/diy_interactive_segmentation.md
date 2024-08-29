@@ -1,10 +1,11 @@
 ---
 jupytext:
+  formats: ipynb,md:myst
   text_representation:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.16.4
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -29,7 +30,7 @@ In this tutorial we will write an interactive segmentation tool and use it on da
 
 ## Setup
 
-```{code-cell} ipython3
+```{code-cell}
 :tags: [remove-output]
 
 # this cell is required to run these notebooks on Binder. Make sure that you also have a desktop tab open.
@@ -38,11 +39,11 @@ if 'BINDER_SERVICE_HOST' in os.environ:
     os.environ['DISPLAY'] = ':1.0'
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 !pip install scikit-learn scikit-image ome-zarr
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 from appdirs import user_data_dir
 import os
 import zarr
@@ -86,7 +87,7 @@ LOGGER.addHandler(streamHandler)
 
 Get data from OpenOrganelle.
 
-```{code-cell} ipython3
+```{code-cell}
 def open_zebrahub():
     url = "https://public.czbiohub.org/royerlab/zebrahub/imaging/single-objective/ZSNS002.ome.zarr/"
 
@@ -106,11 +107,11 @@ def open_zebrahub():
 zebrahub_data = open_zebrahub()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 zebrahub_data[3].shape
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Let's choose a crop to work on
 
 crop_3D = zebrahub_data[3][800, 0, :, :, :]
@@ -119,7 +120,7 @@ crop_3D.shape
 
 ### Visualize in napari
 
-```{code-cell} ipython3
+```{code-cell}
 viewer = napari.Viewer()
 
 scale = (9.92, 3.512, 3.512)
@@ -131,7 +132,7 @@ data_layer.bounding_box.visible = True
 
 ### Extracting features
 
-```{code-cell} ipython3
+```{code-cell}
 def extract_features(image, feature_params):
     features_func = partial(
         multiscale_basic_features,
@@ -164,7 +165,7 @@ What do these features we are extracting look like?
 
 ![A set of features used for the zebrahub model in this tutorial](resources/zebrahub_features.png)
 
-```{code-cell} ipython3
+```{code-cell}
 def show_features():
     for feature_idx in range(features.shape[-1]):
         viewer.add_image(features[:, :, :, feature_idx])
@@ -194,7 +195,7 @@ Due to popular demand we will be using Zarr to store these layers, because that 
 
 ### Create our painting and prediction layers
 
-```{code-cell} ipython3
+```{code-cell}
 zarr_path = os.path.join(user_data_dir("halfway_to_i2k_2023_america", "napari"), "diy_segmentation.zarr")
 print(f"Saving outputs to zarr path: {zarr_path}")
 
@@ -220,7 +221,7 @@ painting_data = zarr.open(
 painting_layer = viewer.add_labels(painting_data, name="Painting", scale=data_layer.scale)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 painting_data.shape
 ```
 
@@ -228,7 +229,7 @@ painting_data.shape
 
 ![A UI widget showing controls for feature size and type](resources/diy_interactive_segmentation_widget.png)
 
-```{code-cell} ipython3
+```{code-cell}
 from qtpy.QtWidgets import (
     QVBoxLayout,
     QHBoxLayout,
@@ -315,7 +316,7 @@ class NapariMLWidget(QWidget):
         
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Let's add this widget to napari
 
 widget = NapariMLWidget()
@@ -333,7 +334,7 @@ When one of these events happens, we want to:
 - update our machine learning model with the new painted data
 - update our prediction with the updated ML model
 
-```{code-cell} ipython3
+```{code-cell}
 # Let's start with our event listener
 
 # We use "curry" because this allows us to "store" our viewer and widget for later use
@@ -374,7 +375,7 @@ def on_data_change(event, viewer=None, widget=None):
     prediction_layer.refresh()
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Now we have to make the hard part of the listener
 
 model = None
@@ -456,7 +457,7 @@ def threaded_on_data_change(
             ]
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Model training function that respects widget's model choice
 def update_model(labels, features, model_type):
     features = features[labels > 0, :]
@@ -484,7 +485,7 @@ def predict(model, features, model_type):
     return np.transpose(prediction)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Now connect everything together
 for listener in [
     viewer.camera.events,

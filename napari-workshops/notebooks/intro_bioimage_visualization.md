@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# napari 
+# napari: an Overview
 
 ```{image} resources/napari-logo.png
 :alt: napari logo

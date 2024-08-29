@@ -1,25 +1,24 @@
 ---
-jupyter:
-  jupytext:
-    formats: ipynb,md
-    text_representation:
-      extension: .md
-      format_name: markdown
-      format_version: '1.3'
-      jupytext_version: 1.16.4
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.4
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
 ---
 
 # Basic image processing with napari
 
-```python
+```{code-cell} ipython3
 !pip install git+https://github.com/guiwitz/napari-skimage.git
 ```
 
-```python
+```{code-cell} ipython3
 import napari
 from napari.utils import nbscreenshot
 from napari_skimage.skimage_filter_widget import median_filter_widget
@@ -41,5 +40,4 @@ viewer.window.add_dock_widget(threshold_widget_instance, area='right')
 
 # Capture the screenshot for the notebook
 nbscreenshot(viewer)
-
 ```
