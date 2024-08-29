@@ -27,5 +27,5 @@ jupytext --set-formats ipynb,md yourfile.md
 Syncing ipynb to md
 
 ```
-jupytext --sync *.ipynb
+jupytext --to myst --set-formats ipynb,myst *.ipynb
 ```
