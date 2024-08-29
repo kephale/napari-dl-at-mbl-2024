@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# DIY Interactive Segmentation with napari
+# DIY Interactive Segmentation
 
 +++
 
@@ -23,14 +23,14 @@ make a custom interactive segmentation tool from scratch.
 
 In this tutorial we will write an interactive segmentation tool and use it on data hosted on [Zebrahub](https://zebrahub.ds.czbiohub.org/).
 
-![3D volumetric image from zebrahub of a developing zebrafish](resources/zebrahub_volume.png)
-![3D volumetric segmentation of with some of the zebrahub image segmented but not very well](resources/zebrahub_partial_segmentation.png)
+![3D volumetric image from zebrahub of a developing zebrafish](./resources/zebrahub_volume.png)
+![3D volumetric segmentation of with some of the zebrahub image segmented but not very well](./resources/zebrahub_partial_segmentation.png)
 
 +++
 
 ## Setup
 
-```{code-cell}
+```{code-cell} ipython3
 :tags: [remove-output]
 
 # this cell is required to run these notebooks on Binder. Make sure that you also have a desktop tab open.
@@ -39,11 +39,11 @@ if 'BINDER_SERVICE_HOST' in os.environ:
     os.environ['DISPLAY'] = ':1.0'
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 !pip install scikit-learn scikit-image ome-zarr
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 from appdirs import user_data_dir
 import os
 import zarr
@@ -70,7 +70,7 @@ from superqt import ensure_main_thread
 import logging
 import sys
 
-LOGGER = logging.getLogger("halfway_to_i2k_2023_america")
+LOGGER = logging.getLogger("napari_dl_at_mbl_2024")
 LOGGER.setLevel(logging.DEBUG)
 
 streamHandler = logging.StreamHandler(sys.stdout)
@@ -85,9 +85,9 @@ LOGGER.addHandler(streamHandler)
 
 +++
 
-Get data from OpenOrganelle.
+Get data from [Zebrahub](https://zebrahub.ds.czbiohub.org/).
 
-```{code-cell}
+```{code-cell} ipython3
 def open_zebrahub():
     url = "https://public.czbiohub.org/royerlab/zebrahub/imaging/single-objective/ZSNS002.ome.zarr/"
 
@@ -107,11 +107,11 @@ def open_zebrahub():
 zebrahub_data = open_zebrahub()
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 zebrahub_data[3].shape
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 # Let's choose a crop to work on
 
 crop_3D = zebrahub_data[3][800, 0, :, :, :]
@@ -120,7 +120,7 @@ crop_3D.shape
 
 ### Visualize in napari
 
-```{code-cell}
+```{code-cell} ipython3
 viewer = napari.Viewer()
 
 scale = (9.92, 3.512, 3.512)
@@ -132,7 +132,7 @@ data_layer.bounding_box.visible = True
 
 ### Extracting features
 
-```{code-cell}
+```{code-cell} ipython3
 def extract_features(image, feature_params):
     features_func = partial(
         multiscale_basic_features,
@@ -163,9 +163,9 @@ features.shape
 
 What do these features we are extracting look like?
 
-![A set of features used for the zebrahub model in this tutorial](resources/zebrahub_features.png)
+![A set of features used for the zebrahub model in this tutorial](./resources/zebrahub_features.png)
 
-```{code-cell}
+```{code-cell} ipython3
 def show_features():
     for feature_idx in range(features.shape[-1]):
         viewer.add_image(features[:, :, :, feature_idx])
@@ -195,8 +195,8 @@ Due to popular demand we will be using Zarr to store these layers, because that 
 
 ### Create our painting and prediction layers
 
-```{code-cell}
-zarr_path = os.path.join(user_data_dir("halfway_to_i2k_2023_america", "napari"), "diy_segmentation.zarr")
+```{code-cell} ipython3
+zarr_path = os.path.join(user_data_dir("napari_dl_at_mbl_2024", "napari"), "diy_segmentation.zarr")
 print(f"Saving outputs to zarr path: {zarr_path}")
 
 # Create a prediction layer
@@ -221,15 +221,15 @@ painting_data = zarr.open(
 painting_layer = viewer.add_labels(painting_data, name="Painting", scale=data_layer.scale)
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 painting_data.shape
 ```
 
 ### Let's make a UI as well
 
-![A UI widget showing controls for feature size and type](resources/diy_interactive_segmentation_widget.png)
+![A UI widget showing controls for feature size and type](./resources/diy_interactive_segmentation_widget.png)
 
-```{code-cell}
+```{code-cell} ipython3
 from qtpy.QtWidgets import (
     QVBoxLayout,
     QHBoxLayout,
@@ -316,7 +316,7 @@ class NapariMLWidget(QWidget):
         
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 # Let's add this widget to napari
 
 widget = NapariMLWidget()
@@ -334,7 +334,7 @@ When one of these events happens, we want to:
 - update our machine learning model with the new painted data
 - update our prediction with the updated ML model
 
-```{code-cell}
+```{code-cell} ipython3
 # Let's start with our event listener
 
 # We use "curry" because this allows us to "store" our viewer and widget for later use
@@ -348,7 +348,7 @@ def on_data_change(event, viewer=None, widget=None):
     # Training the ML model and generating predictions can take time
     #   we will use a "thread" to perform these calculations
     #   otherwise napari will freeze until these
-    calculations are done
+    #   calculations are done
     thread = threading.Thread(
         target=threaded_on_data_change,
         args=(
@@ -375,7 +375,7 @@ def on_data_change(event, viewer=None, widget=None):
     prediction_layer.refresh()
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 # Now we have to make the hard part of the listener
 
 model = None
@@ -457,7 +457,7 @@ def threaded_on_data_change(
             ]
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 # Model training function that respects widget's model choice
 def update_model(labels, features, model_type):
     features = features[labels > 0, :]
@@ -485,7 +485,7 @@ def predict(model, features, model_type):
     return np.transpose(prediction)
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 # Now connect everything together
 for listener in [
     viewer.camera.events,
@@ -504,3 +504,10 @@ for listener in [
         )
     )
 ```
+
+# Activities
+
+- add buttons for `Train` and `Predict`
+- get whole image segmentation working
+- add more models
+- add other feature sources

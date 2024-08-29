@@ -14,8 +14,5 @@ chapters:
   - file: notebooks/intro_bioimage_visualization
   - file: notebooks/basic_image_processing  
   - file: notebooks/diy_interactive_segmentation
-  - file: notebooks/segmenting_and_measuring_nuclei_stardist  
-  - file: notebooks/cellpose_napari
-  - file: notebooks/napari_convpaint
-  - file: notebooks/segment_anything
+  - file: notebooks/dl_in_napari
 - file: make_a_simple_plugin
