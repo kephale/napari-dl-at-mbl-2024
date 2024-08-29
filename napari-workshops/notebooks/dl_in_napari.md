@@ -29,8 +29,20 @@ kernelspec:
 
 ## Cellpose
 
+![A 2D cell segmentation with cellpose shown in napari](./resources/cellpose_screenshot.png)
+
+Steps:
+
+1. File > Open Sample > cellpose-napari > Cells 2D
+2. Plugins > cellpose
+3. Check cellpose options in screenshot to repeat
+
 ```{code-cell} ipython3
-# !pip install cellpose-napari
+# !pip install git+https://github.com/MouseLand/cellpose-napari
+```
+
+```{code-cell} ipython3
+
 ```
 
 ## Segment Anything
