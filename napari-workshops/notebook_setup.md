@@ -12,8 +12,7 @@ either downloading a .zip file (recommended for beginners) or cloning via git.
 ### Downloading .zip
 To download the notebooks as a .zip file, do the following:
 
-1. Navigate your web browser to the workshop's github repository (for this
-   template, this is https://github.com/napari/napari-workshop-template)
+1. Navigate your web browser to the workshop's github repository (e.g. https://github.com/kephale/napari-dl-at-mbl-2024)
 2. Click the green "Code" button to open the download menu and then
    "Download ZIP" ![download code](./resources/download_code.png)
 3. Choose the location you would like to download the .zip into.
@@ -35,7 +34,7 @@ Then, clone the repository. This will download all of the files necessary for
 this tutorial.
 
  ```bash
- git clone https://github.com/napari/napari-workshop-template.git
+ git clone https://github.com/kephale/napari-dl-at-mbl-2024.git
  ```
 
 ## Launch the `jupyter notebook` application
@@ -44,7 +43,7 @@ Open your terminal and navigate to the `notebooks` subdirectory of the
 `napari-workshop-template` directory you just downloaded.
 
 ```
-cd <path to napari-workshop-template>/notebooks
+cd <path to napari-workshop>/notebooks
 ```
 
 Now activate the `napari-tutorial` conda environment you created in the 

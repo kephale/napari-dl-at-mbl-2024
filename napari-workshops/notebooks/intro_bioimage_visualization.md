@@ -11,18 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Bioimage visualization in Python
-
-Python has a rich selection of [data visualization](https://pyviz.org/index.html) tools that cover a wide range of applications, for example Matplotlib (Hunter, 2007), Mayavi (Ramachandran & Varoquaux, 2011), [ipyvolume](https://github.com/maartenbreddels/ipyvolume/), the yt Project (Turk et al., 2010), [ITK](https://itk.org/) (Johnson, McCormick, Ibanez 2015), and more recently **[napari](http://napari.org)**.
-
-For **bioimage visualization** some major challenges are: 
-- working with large and complex images: image size and dimensionality
-- manual interactivity: for human in the loop annotation
-- interactive analysis: for interactive parameter tuning and quality control
-
-This notebook will introduce `napari` a fast, interactive, multi-dimensional image viewer for Python.
-
-## Introducing napari 
+# napari 
 
 ```{image} resources/napari-logo.png
 :alt: napari logo

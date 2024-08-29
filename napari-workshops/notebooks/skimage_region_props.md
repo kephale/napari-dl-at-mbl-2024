@@ -11,6 +11,6 @@ kernelspec:
   name: python3
 ---
 
-# Skimage Region Props
+# Analysis in napari
 
 

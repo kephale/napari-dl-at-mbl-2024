@@ -1,14 +1,17 @@
-name: workshop
+name: napari-dl-at-mbl-2024
 channels:
   - conda-forge
 dependencies:
+  - "python<3.12"
   - jupyterlab
   - jupytext
   - matplotlib
   - napari
+  - pyqt
+  - qtpy
   - pip
   - pip:
     - jupyter-book
     - napari-animation
-    - "git+https://github.com/kephale/cellpose-napari@cellposev3"
+#    - "git+0https://github.com/kephale/cellpose-napari@cellposev3"
 

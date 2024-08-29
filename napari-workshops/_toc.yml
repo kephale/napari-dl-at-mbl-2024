@@ -12,14 +12,11 @@ chapters:
 - file: notebooks/index
   sections:
   - file: notebooks/intro_bioimage_visualization
-  - file: notebooks/spot_detection
-  - file: notebooks/skimage_region_props
-  - file: notebooks/segmenting_and_measuring_nuclei_stardist
+  - file: notebooks/basic_image_processing  
+  - file: notebooks/skimage_region_props  
   - file: notebooks/diy_interactive_segmentation
-  - file: notebooks/mitonet_segmentation
+  - file: notebooks/segmenting_and_measuring_nuclei_stardist  
   - file: notebooks/cellpose_napari
   - file: notebooks/napari_convpaint
   - file: notebooks/segment_anything
-  - file: notebooks/manual_annotation
-  - file: notebooks/custom_colormaps
 - file: make_a_simple_plugin
