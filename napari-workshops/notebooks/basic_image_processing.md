@@ -12,10 +12,11 @@ kernelspec:
   name: python3
 ---
 
-# Basic image processing with napari
+# Basic image processing
 
 ```{code-cell} ipython3
 !pip install git+https://github.com/guiwitz/napari-skimage.git
+!pip install napari-skimage-regionprops
 ```
 
 ```{code-cell} ipython3
@@ -52,3 +53,17 @@ screenshot
 - rolling ball operations
 - find maxima
 - marching cubes
+
++++
+
+# Activity
+
+Use napari-skimage to do a vanilla segmentation of the cells image and display their statistics:
+
+- Use your favorite filter (median filter maybe?)
+- Use your favorite thresholding method (perhaps Otsu?)
+- Get the connected components
+- Use napari-skimage-regionprops (Note that this is under the `Tools` menu as `Measurement Tables>Regionprops`)
+- Turn on the `Show selected checkbox` from the Labels layer controls
+
+![Example of instances segmented with vanilla processing methods in napari](./resources/napari_skimage_regionprops.png)
