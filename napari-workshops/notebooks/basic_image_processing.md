@@ -39,5 +39,19 @@ viewer.window.add_dock_widget(laplace_widget, area='right')
 viewer.window.add_dock_widget(threshold_widget_instance, area='right')
 
 # Capture the screenshot for the notebook
-nbscreenshot(viewer)
+screenshot = nbscreenshot(viewer)
+screenshot
+```
+
+A screenshot can be seen here ![screenshot of napari skimage with an image of cells open](./resources/napari_skimage.png)
+
+```{code-cell} ipython3
+from PIL import Image
+import numpy as np
+
+# Assuming 'screenshot' is your NumPy array from nbscreenshot(viewer)
+image = Image.fromarray(screenshot.image)
+
+# Save the image
+image.save('./resources/napari_skimage.png')
 ```
