@@ -21,7 +21,6 @@ kernelspec:
 - [StarDist](https://github.com/stardist/stardist-napari)
 - [Cellpose](https://github.com/MouseLand/cellpose-napari)
 - [napari-convpaint](https://github.com/guiwitz/napari-convpaint)
-- [napari-stable-diffusion](https://github.com/kephale/napari-stable-diffusion)
 - [napari-segment-anything](https://github.com/royerlab/napari-segment-anything)
 - [napari-segment-anything-2](https://github.com/JoOkuma/napari-segment-anything-2)
 - [cellcanvas](https://cellcanvas.org/)
@@ -66,13 +65,6 @@ For more info see [here](https://github.com/royerlab/napari-segment-anything)
 
 ```{code-cell} ipython3
 # !pip install git+https://github.com/guiwitz/napari-convpaint.git
-```
-
-## napari-stable-diffusion
-
-
-```{code-cell} ipython3
-!pip install git+https://github.com/guiwitz/napari-convpaint.git
 ```
 
 ## CellCanvas
