@@ -27,6 +27,12 @@ kernelspec:
 
 +++
 
+## Stardist
+
+For a comprehensive overview of stardist in napari check out this [workshop tutorial](https://kephale.github.io/napari-workshop-halfway-to-i2k/notebooks/segmenting_and_measuring_nuclei_stardist.html)
+
++++
+
 ## Cellpose
 
 ![A 2D cell segmentation with cellpose shown in napari](./resources/cellpose_screenshot.png)
