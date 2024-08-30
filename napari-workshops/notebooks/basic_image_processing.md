@@ -15,6 +15,8 @@ kernelspec:
 # Basic image processing
 
 ```{code-cell} ipython3
+:tags: [remove-output]
+
 !pip install git+https://github.com/guiwitz/napari-skimage.git
 !pip install napari-skimage-regionprops
 ```

@@ -40,6 +40,8 @@ if 'BINDER_SERVICE_HOST' in os.environ:
 ```
 
 ```{code-cell} ipython3
+:tags: [remove-output]
+
 !pip install scikit-learn scikit-image ome-zarr
 ```
 
