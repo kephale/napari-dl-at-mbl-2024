@@ -31,6 +31,10 @@ kernelspec:
 
 ![A 2D cell segmentation with cellpose shown in napari](./resources/cellpose_screenshot.png)
 
+From Carsen Stringer's group at HHMI Janelia Research Campus.
+
+For more info see [here](https://github.com/MouseLand/cellpose-napari).
+
 Steps:
 
 1. File > Open Sample > cellpose-napari > Cells 2D
@@ -41,12 +45,20 @@ Steps:
 # !pip install git+https://github.com/MouseLand/cellpose-napari
 ```
 
-```{code-cell} ipython3
+## Segment anything
 
+![Screenshot of cells being segmented with napari segment anything plugin](./resources/napari_segment_anything.png)
+
+From Jordão Bragantini of the Royer lab, CZ Biohub
+
+For more info see [here](https://github.com/royerlab/napari-segment-anything)
+
+```{code-cell} ipython3
+# !pip install git+https://github.com/royerlab/napari-segment-anything.git@fix-napari-colors
 ```
 
-## Segment Anything
-
 ```{code-cell} ipython3
-# !pip install napari-segment-anything
+import napari
+
+viewer = napari.Viewer()
 ```
