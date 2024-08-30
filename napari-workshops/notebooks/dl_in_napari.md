@@ -24,6 +24,7 @@ kernelspec:
 - [napari-stable-diffusion](https://github.com/kephale/napari-stable-diffusion)
 - [napari-segment-anything](https://github.com/royerlab/napari-segment-anything)
 - [napari-segment-anything-2](https://github.com/JoOkuma/napari-segment-anything-2)
+- [cellcanvas](https://cellcanvas.org/)
 
 +++
 
@@ -57,8 +58,22 @@ For more info see [here](https://github.com/royerlab/napari-segment-anything)
 # !pip install git+https://github.com/royerlab/napari-segment-anything.git@fix-napari-colors
 ```
 
-```{code-cell} ipython3
-import napari
+## napari-convpaint
 
-viewer = napari.Viewer()
++++
+
+## napari-stable-diffusion
+
++++
+
+## CellCanvas
+
+![A screenshot of cellcanvas interactive segmentation tool](./resources/cellcanvas_covid.png)
+
+CellCanvas is a tool made by [Kyle Harrington](https://kyleharrington.com) and [Kevin Yamauchi](https://kevinyamauchi.github.io/) along with more collaborators like Lorenz Lamm, Kevin Zhao, and Utz Ermel.
+
+[Example data](https://www.dropbox.com/scl/fi/dpxm20jjyj7j95u9qpdei/cropped_covid.zarr.zip?rlkey=5jzdkvqnyyxqtbc5b682eo5s6&dl=0)
+
+```{code-cell} ipython3
+# !pip install git+https://github.com/cellcanvas/cellcanvas.git@dl-at-mbl-2024
 ```
