@@ -14,14 +14,11 @@ kernelspec:
 
 # Animation in napari
 
-```{code-cell} ipython3
-from IPython.display import Video
-
-# Path to your video file
-video_path = "./resources/animation_example.mp4"
-
-# Display the video
-Video(video_path)
+```{raw} html
+<video controls>
+  <source src="./resources/animation_example.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 ```
 
 Creating a short animation is a great way to introduce your data during a presentation and provide insight into the image analysis. It is especially valuable while working with 3D data that can otherwise be presented only in a form of 2D screenshots.
