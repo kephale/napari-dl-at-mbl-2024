@@ -15,4 +15,5 @@ chapters:
   - file: notebooks/basic_image_processing  
   - file: notebooks/diy_interactive_segmentation
   - file: notebooks/dl_in_napari
+  - file: notebooks/try_animation
 - file: make_a_simple_plugin

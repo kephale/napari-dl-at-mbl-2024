@@ -1,19 +1,28 @@
 ---
 jupytext:
+  formats: ipynb,md:myst
   text_representation:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.16.4
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
 
-# Introduction to animation with napari
+# Animation in napari
 
-+++
+```{code-cell} ipython3
+from IPython.display import Video
+
+# Path to your video file
+video_path = "./resources/animation_example.mp4"
+
+# Display the video
+Video(video_path)
+```
 
 Creating a short animation is a great way to introduce your data during a presentation and provide insight into the image analysis. It is especially valuable while working with 3D data that can otherwise be presented only in a form of 2D screenshots.
 
@@ -42,6 +51,7 @@ if 'BINDER_SERVICE_HOST' in os.environ:
 
 ```{code-cell} ipython3
 :tags: [remove-output]
+
 # Instal animation plugin
 # This step has to be performed only once in a given environment.
 # You can remove this cell or use '#' to comment the code out after a successful installation.
@@ -69,7 +79,7 @@ from napari_animation.easing import Easing
 Get data from OpenOrganelle.
 
 ```{code-cell} ipython3
-group = zarr.open(zarr.N5FSStore('s3://janelia-cosem-datasets/jrc_mus-kidney/jrc_mus-kidney.n5', anon=True)) # access the root of the n5 container
+group = zarr.open(store=zarr.N5FSStore('s3://janelia-cosem-datasets/jrc_mus-kidney/jrc_mus-kidney.n5', anon=True)) # access the root of the n5 container
 
 # Get access to all resolution levels of the data.
 img_data = [
@@ -99,6 +109,7 @@ print(cropped_label.shape)
 
 ```{code-cell} ipython3
 :tags: [remove-output]
+
 viewer = napari.Viewer()
 viewer.add_image(cropped_img)
 ```
@@ -153,7 +164,6 @@ animation.animate(save_path, canvas_only=True, fps=24)
 ## Script from the community
 
 Check out this demo from the community that was collaboratively developed on the by Callum Tromans-Coia, Lorenzo Gaifas, and Alister Burt. For more details see https://forum.image.sc/t/creating-an-animation-for-visualisation-of-3d-labels-emerging-from-a-2d-plane/77517/6.
-
 
 ```{code-cell} ipython3
 viewer = napari.Viewer(ndisplay=3)
