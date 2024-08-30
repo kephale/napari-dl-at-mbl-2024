@@ -191,7 +191,6 @@ We will do this using 3 different image layers:
 
 Due to popular demand we will be using Zarr to store these layers, because that will help this approach scale to very large datasets. However, we could have used numpy arrays as well.
 
-
 +++
 
 ### Create our painting and prediction layers
