@@ -16,7 +16,7 @@ kernelspec:
 
 ```{raw} html
 <video controls>
-  <source src="./resources/animation_example.mp4" type="video/mp4">
+  <source src="./resources/animation_example_v2.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 ```
