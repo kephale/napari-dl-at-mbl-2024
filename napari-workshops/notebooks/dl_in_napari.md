@@ -60,11 +60,20 @@ For more info see [here](https://github.com/royerlab/napari-segment-anything)
 
 ## napari-convpaint
 
-+++
+![napari-convpaint for interactive segmentation](./resources/napari_convpaint.png)
+
+[napari-convpaint](https://github.com/guiwitz/napari-convpaint) by Guillaume Witz for interactive segmentation using pretained NN models.
+
+```{code-cell} ipython3
+# !pip install git+https://github.com/guiwitz/napari-convpaint.git
+```
 
 ## napari-stable-diffusion
 
-+++
+
+```{code-cell} ipython3
+!pip install git+https://github.com/guiwitz/napari-convpaint.git
+```
 
 ## CellCanvas
 
@@ -76,4 +85,10 @@ CellCanvas is a tool made by [Kyle Harrington](https://kyleharrington.com) and [
 
 ```{code-cell} ipython3
 # !pip install git+https://github.com/cellcanvas/cellcanvas.git@dl-at-mbl-2024
+```
+
+```{code-cell} ipython3
+import napari
+
+viewer = napari.Viewer()
 ```
