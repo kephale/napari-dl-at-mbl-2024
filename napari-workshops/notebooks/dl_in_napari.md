@@ -24,6 +24,7 @@ kernelspec:
 - [napari-segment-anything](https://github.com/royerlab/napari-segment-anything)
 - [napari-segment-anything-2](https://github.com/JoOkuma/napari-segment-anything-2)
 - [empanada](https://empanada.readthedocs.io/en/latest/)
+- [TomoTwin](https://tomotwin-cryoet.readthedocs.io/en/stable/)
 - [cellcanvas](https://cellcanvas.org/)
 
 +++
