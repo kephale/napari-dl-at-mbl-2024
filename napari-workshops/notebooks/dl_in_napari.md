@@ -23,6 +23,7 @@ kernelspec:
 - [napari-convpaint](https://github.com/guiwitz/napari-convpaint)
 - [napari-segment-anything](https://github.com/royerlab/napari-segment-anything)
 - [napari-segment-anything-2](https://github.com/JoOkuma/napari-segment-anything-2)
+- [empanada](https://empanada.readthedocs.io/en/latest/)
 - [cellcanvas](https://cellcanvas.org/)
 
 +++
